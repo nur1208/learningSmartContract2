@@ -36,6 +36,7 @@ contract FundMe{
     }
 
 
+
     function getPrice() public view returns(uint256){
         (,int256 answer,,,) = priceFeed.latestRoundData();
         // ETH/USD rate in 18 digit
@@ -45,6 +46,23 @@ contract FundMe{
         return uint256(answer * 10000000000);
     }
 
+    
+    // function getEnterancePrice() public view returns(uint256){
+    //     uint256 minimumUSD = 50 * 10 ** 18;
+    //     uint256 price = getPrice();
+    //     uint256 precistion = 1 * 10**18;
+    //     return ((minimumUSD * precistion) / price) + 1;
+    // }
+
+    function getEntranceFee() public view returns (uint256) {
+        // minimumUSD
+        uint256 minimumUSD = 50 * 10**18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+        // return (minimumUSD * precision) / price;
+        // We fixed a rounding error found in the video by adding one!
+        return ((minimumUSD * precision) / price) + 1;
+    }
     function getConversionRate(uint256 ethAmount) public view returns(uint256){
         uint256 ethPrice = getPrice();
         uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
