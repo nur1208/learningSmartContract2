@@ -1,6 +1,6 @@
 from scripts.deploy import deploy_fund_me
 from scripts.helpful_scripts import LOCAL_BLOCKCHAIN_ENVIRONMENTS, get_account
-from brownie import network , accounts
+from brownie import network , accounts, exceptions
 import pytest
 
 def test_can_fund_and_withdraw():
@@ -21,6 +21,7 @@ def test_only_owner_can_withdraw():
 
     fund_me = deploy_fund_me()
     bad_actor = accounts.add()
-    fund_me.withdraw({"from": bad_actor})
-    tx1.wait(1)
+    with pytest.raises(exceptions.VirtualMachineError):
+        fund_me.withdraw({"from": bad_actor})
+    # tx1.wait(1)
 
