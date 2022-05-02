@@ -1,2 +1,3 @@
 - {DONE} learning how to deploy contract to rinkeby test network using brownie and how to interact with a contract in brownie and learning about brownie console
 - {DONE} deploying fund_me contract with brownie part 1
+- {DONE} deploying fund_me contract with brownie part 2

@@ -6,7 +6,7 @@ import pytest
 def test_can_fund_and_withdraw():
     account = get_account()
     fund_me = deploy_fund_me()
-    entrance_price = fund_me.getEntranceFee()
+    entrance_price = fund_me.getEntranceFee() + 100
     tx = fund_me.fund({"from": account, "value": entrance_price})
     tx.wait(1)
     print(account)

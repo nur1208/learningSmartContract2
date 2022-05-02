@@ -3,6 +3,7 @@ from .helpful_scripts import get_account, deploy_mocks, LOCAL_BLOCKCHAIN_ENVIRON
 
 def deploy_fund_me():
     account = get_account()
+    print(network.show_active())
     if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         price_fund_address = config["networks"][network.show_active()]["eth_usd_price_feed"]
     
