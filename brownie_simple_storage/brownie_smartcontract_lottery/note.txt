@@ -2,3 +2,4 @@
 - {DONE} an admin will choose when the lottery is Over
 - {DONE} The lottery will select a random winner
 - {DONE} creating lottery contract
+- {DONE} creating helpers function for deploying lottery contract

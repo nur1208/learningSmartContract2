@@ -67,7 +67,7 @@ contract Lottery is VRFConsumerBase ,Ownable{
         require(_randomness > 0, "radnom-note-found");
         uint256 indexOfWinner = _randomness % players.length;
         recentWinner = players[indexOfWinner];
-        recentWinner.transfer(address(this).balance);
+        payable(recentWinner).transfer(address(this).balance);
         players = new address payable[](0);
 
         lottery_state = LOTTERY_STATE.CLOSE;
